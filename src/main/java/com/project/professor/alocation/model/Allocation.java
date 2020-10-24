@@ -1,11 +1,12 @@
 package com.project.professor.alocation.model;
 
 import java.sql.Time;
+import java.time.DayOfWeek;
 
 public class Allocation {
 
 	private Long id;
-	private String day;
+	private DayOfWeek day;
 	private Time end;
 	private Time start;
 
@@ -13,7 +14,7 @@ public class Allocation {
 		super();
 	}
 
-	public Allocation(Long id, String day, Time end, Time start) {
+	public Allocation(Long id, DayOfWeek day, Time end, Time start) {
 		super();
 		this.id = id;
 		this.day = day;
@@ -29,11 +30,11 @@ public class Allocation {
 		this.id = id;
 	}
 
-	public String getDay() {
+	public DayOfWeek getDay() {
 		return day;
 	}
 
-	public void setDay(String day) {
+	public void setDay(DayOfWeek day) {
 		this.day = day;
 	}
 
@@ -52,5 +53,7 @@ public class Allocation {
 	public void setStart(Time start) {
 		this.start = start;
 	}
+
+	
 
 }
