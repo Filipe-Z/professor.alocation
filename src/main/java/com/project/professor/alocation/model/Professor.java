@@ -1,5 +1,7 @@
 package com.project.professor.alocation.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +25,9 @@ public class Professor {
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	private Departament departament;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "professor")
+	private List<Allocation> allocation;
 	
 	public Professor() {
 		super();
