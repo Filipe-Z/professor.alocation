@@ -64,4 +64,13 @@ public class Professor {
 		this.name = name;
 	}
 
+	public void setDepartament(Departament departament2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Professor [id=" + id + ", cpf=" + cpf + ", name=" + name + "]";
+	}
 }
