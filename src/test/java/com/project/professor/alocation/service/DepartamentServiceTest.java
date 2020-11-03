@@ -24,12 +24,60 @@ public class DepartamentServiceTest {
 		}
 	}
 	
+//	@Test
+//	public void readAll_2() {
+//		List<Departament> departaments = departamentService.findAll("part");
+//		for (Departament departament : departaments) {
+//			System.out.println(departament);
+//		}
+//	}
+	
 	@Test
-	public void readAll_2() {
-		List<Departament> departaments = departamentService.findAll("part");
-		for (Departament departament : departaments) {
-			System.out.println(departament);
-		}
+	public void readById() {
+		
+		Long id = 1L;
+
+		Departament departament = departamentService.findById(id);
+
+		System.out.println(departament);
+	}
+
+	@Test
+	public void create() {
+		
+		Departament departament = new Departament();
+		departament.setId(null);
+		departament.setName("Departamento de Física");
+
+		departament = departamentService.create(departament);
+
+		System.out.println(departament);
+	}
+
+	@Test
+	public void update() {
+		
+		Departament departament = new Departament();
+		departament.setId(null);
+		departament.setName("Departameno de Biologia");
+		
+		departament = departamentService.update(departament);
+
+		System.out.println(departament);
+	}
+
+	@Test
+	public void deleteById() {
+		
+		Long id = 1L;
+
+		departamentService.deleteById(id);
+	}
+
+	@Test
+	public void deleteAll() {
+		
+		departamentService.deleteAll();
 	}
 	
 	

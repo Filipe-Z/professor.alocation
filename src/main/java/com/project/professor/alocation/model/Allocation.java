@@ -1,6 +1,8 @@
 package com.project.professor.alocation.model;
 
+
 import java.sql.Time;
+//import java.sql.Time;
 import java.time.DayOfWeek;
 
 import javax.persistence.Column;
@@ -13,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+
 @Entity
 @Table(name = "allocation")
 public class Allocation {
@@ -79,6 +83,22 @@ private Course course;
 		this.start = start;
 	}
 
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
 	@Override
 	public String toString() {
 		return "Allocation [id=" + id + ", day=" + day + ", end=" + end + ", start=" + start + ", professor="
