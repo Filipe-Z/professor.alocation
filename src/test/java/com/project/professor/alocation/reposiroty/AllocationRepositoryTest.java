@@ -26,16 +26,16 @@ public class AllocationRepositoryTest {
 	private AllocationRepository allocationRepository;
 	
 	@Test
-	public void readAll() {          //ERRO
+	public void findAll() {          //ERRO
 		List<Allocation> allocations = allocationRepository.findAll(); 
-		
-		for (Allocation allocation : allocations) {
-			System.out.println(allocation);
-		}
+		allocations.stream().forEach(System.out::println);
+//		for (Allocation allocation : allocations) {
+//			System.out.println(allocation);
+//		}
 	}
 	
 	@Test
-	public void readById() {
+	public void findById() {
 		Long id = 1L;
 		Optional<Allocation> optionalAllocation = allocationRepository.findById(id);
 		Allocation allocation = optionalAllocation.orElse(null);
