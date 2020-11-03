@@ -10,78 +10,72 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 
+import com.project.professor.alocation.model.Course;
 import com.project.professor.alocation.model.Departament;
 import com.project.professor.alocation.model.Professor;
+import com.project.professor.alocation.repository.CourseRepository;
 import com.project.professor.alocation.repository.ProfessorRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 @TestPropertySource(locations = "classpath:application.properties")
-public class ProfessorRepositoryTest {
+public class CourseRepositoryTest {
 
 	@Autowired
-	private ProfessorRepository professorRepository;
+	private CourseRepository courseRepository;
 	
 	@Test
 	public void create() { 
-		//Arrange
 		
-		Departament departament = new Departament();
-		departament.setId(2L);
+		Course course = new Course();
+		course.setId(null);
+		course.setName("Física");
 		
-		Professor professor = new Professor();
-		professor.setId(null);
-		professor.setName("Professor 1");
-		professor.setCpf("111.111.111-11");
-		//professor.setDepartament(departament);
+		course = courseRepository.save(course);
 		
-		professor = professorRepository.save(professor);
-		
-		System.out.println(professor);
+		System.out.println(course);
 	}
 	
-	public Professor create(Professor professor) {
-	return professorRepository.save(professor);
+	public Course create(Course course) {
+	return courseRepository.save(course);
 	}
 	
 	@Test
 	public void readAll() {          //ERRO
-		List<Professor> professors = professorRepository.findAll(); 
+		List<Course> courses = courseRepository.findAll(); 
 		
-		for (Professor professor : professors) {
-			System.out.println(professor.toString());
+		for (Course course : courses) {
+			System.out.println(courses.toString());
 		}
 	}
 	
 	@Test
 	public void readById() {        //ERRO
 		Long id = 1L;
-		Optional<Professor> optionalProfessor = professorRepository.findById(id);
-		Professor professor = optionalProfessor.orElse(null);
-		System.out.println(professor);
+		Optional<Course> optionalCourse = courseRepository.findById(id);
+		Course course = optionalCourse.orElse(null);
+		System.out.println(course);
 	}
 	
 	@Test 
 	public void update() {
-		Professor professor = new Professor();
-	    professor.setId(null);
-		professor.setName("Professor 1");
-		professor.setCpf("111.111.111-11");
-		professor = professorRepository.save(professor);
+		Course course = new Course();
+		course.setId(null);
+		course.setName("Física");
+		course = courseRepository.save(course);
 	
-	    System.out.println(professor);	
+	    System.out.println(course);	
 	}
 	
 	@Test
 	public void deleteAll() {
-	professorRepository.deleteAllInBatch();
+		courseRepository.deleteAllInBatch();
 	}
 	
 	@Test
 	public void deleteById() {
 		Long id = 1L;
-	professorRepository.deleteById(id);
-	}
-	
+		courseRepository.deleteById(id);
+	}	
 }

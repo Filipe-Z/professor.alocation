@@ -73,4 +73,9 @@ public class Professor {
 	public String toString() {
 		return "Professor [id=" + id + ", cpf=" + cpf + ", name=" + name + "]";
 	}
+
+	public Professor getDepartament() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

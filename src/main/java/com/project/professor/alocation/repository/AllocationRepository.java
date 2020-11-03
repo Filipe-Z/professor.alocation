@@ -13,4 +13,5 @@ public interface AllocationRepository extends JpaRepository<Allocation, Long> {
 
 	List<Allocation> findByProfessor(Professor professor);
 	List<Allocation> findByCourse(Course course);
+	List<Allocation> findByNameContainingIgnoreCase(Long id);
 }

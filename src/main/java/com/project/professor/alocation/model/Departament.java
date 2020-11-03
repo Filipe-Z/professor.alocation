@@ -49,4 +49,9 @@ public class Departament {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "Departament [id=" + id + ", name=" + name + ", professors=" + professors + "]";
+	}
+
 }

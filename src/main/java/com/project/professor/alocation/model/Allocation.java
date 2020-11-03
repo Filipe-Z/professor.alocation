@@ -79,6 +79,10 @@ private Course course;
 		this.start = start;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Allocation [id=" + id + ", day=" + day + ", end=" + end + ", start=" + start + ", professor="
+				+ professor + ", course=" + course + "]";
+	}
 
 }
