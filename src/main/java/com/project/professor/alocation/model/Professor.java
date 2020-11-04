@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "Professor")
 public class Professor {
@@ -22,7 +24,8 @@ public class Professor {
 	private String cpf;
 	@Column(name ="name", nullable = false)
 	private String name;
-
+	
+@JsonIgnoreProperties({"professors"})
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	private Departament departament;
 	

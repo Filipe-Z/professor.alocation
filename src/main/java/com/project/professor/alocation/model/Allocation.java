@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "allocation")
@@ -33,9 +35,11 @@ public class Allocation {
 @Column(name ="start", nullable = false, columnDefinition = "TIME")
 	private Time start;
 
+@JsonIgnoreProperties({"allocations"})
 @ManyToOne(fetch = FetchType.EAGER, optional = false)
 private Professor professor;
 
+@JsonIgnoreProperties({"allocations"})
 @ManyToOne(fetch = FetchType.EAGER, optional = false)
 private Course course;
 
