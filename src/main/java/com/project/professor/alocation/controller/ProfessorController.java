@@ -21,6 +21,10 @@ import com.project.professor.alocation.model.Professor;
 import com.project.professor.alocation.service.DepartamentService;
 import com.project.professor.alocation.service.ProfessorService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping(path = "/professor", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProfessorController {
@@ -31,7 +35,10 @@ private ProfessorService professorService;
 		super();
 		this.professorService = departamentService;
 	}
-	
+	@ApiOperation(value = "Listar todos os professores")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "OK")
+	})
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Professor>> readAll(@RequestParam(name = "name", required = false) String name){
@@ -39,6 +46,12 @@ private ProfessorService professorService;
 		return new ResponseEntity<List<Professor>>(professor, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "Get professor")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "OK"),
+		@ApiResponse(code = 400, message = "Bad Request"),
+		@ApiResponse(code = 404, message = "Not Found")
+	})
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Professor> getProfessor(@PathVariable(value = "id") Long id) {
@@ -49,7 +62,11 @@ private ProfessorService professorService;
 			return new ResponseEntity<>(professor, HttpStatus.OK);
 		}
 	}
-
+	@ApiOperation(value = "Create professor")
+	@ApiResponses({
+		@ApiResponse(code = 201, message = "Created"),
+		@ApiResponse(code = 400, message = "Bad Request")
+	})
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Professor> createProfessor(@RequestBody Professor professor) {
@@ -61,6 +78,12 @@ private ProfessorService professorService;
 		}
 	}
 	
+	@ApiOperation(value = "Update professor")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "OK"),
+		@ApiResponse(code = 400, message = "Bad Request"),
+		@ApiResponse(code = 404, message = "Not Found")
+	})
 	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Professor> updateProfessor(@PathVariable(value = "id") Long id,
@@ -73,7 +96,11 @@ private ProfessorService professorService;
 			return new ResponseEntity<>(professor, HttpStatus.OK);
 		}
 	}
-
+	@ApiOperation(value = "Delete professor")
+	@ApiResponses({
+		@ApiResponse(code = 204, message = "No Content"),
+		@ApiResponse(code = 400, message = "Bad Request")
+	})
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> deleteProfessor(@PathVariable(value = "id") Long id) {
@@ -81,6 +108,10 @@ private ProfessorService professorService;
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
+	@ApiOperation(value = "Delete all professors")
+	@ApiResponses({
+		@ApiResponse(code = 204, message = "No Content")
+	})
 	@DeleteMapping
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> deleteProfessors() {
